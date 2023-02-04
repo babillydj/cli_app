@@ -96,6 +96,16 @@ class AtmDB {
         }
         return result
     }
+
+    async update(body) {
+        let result;
+        try {
+            result = await this.db.put(body)
+        } catch (err) {
+            return err;
+        }
+        return result
+    }
 }
 
 
@@ -123,7 +133,6 @@ class DebtDB {
     }
 
     async getByLender(name) {
-        console.log(name)
         let result;
         try {
             result = await this.db.allDocs({

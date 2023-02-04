@@ -33,7 +33,10 @@ inquirer
             message: 'Please chose which application you want to use',
             choices: [
                 'ATM',
-                'Poker Face',
+                {
+                    name: 'Poker',
+                    disabled: 'Still under development',
+                },
             ],
         },
     ])

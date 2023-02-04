@@ -44,10 +44,12 @@ class AtmController {
         this.currentUser = await atmDB.get(this.currentUser._id)
     }
 
-    async deposit(amount) {
+    async deposit(amount, user=null, currentDebts=null, target=false) {
+        if (!user) user = this.currentUser
+        if (!currentDebts) currentDebts = this.currentDebts
         let remain = amount
         let transferred = []
-        for (const debt of this.currentDebts.rows) {
+        for (const debt of currentDebts.rows) {
             if (remain === 0) {
                 break
             }
@@ -62,11 +64,17 @@ class AtmController {
             transferred.push(await this.debtPayment(payAmount, debt.doc))
         }
         if (remain) {
-            await atmDB.deposit(amount, this.currentUser)
+            await atmDB.deposit(remain, user)
         }
+
         await this.refreshCurrentUser()
+        let userResult = this.currentUser
+        if (target) {
+            userResult = await atmDB.get(user._id)
+        }
+
         return {
-            ...this.currentUser,
+            ...userResult,
             pay: transferred
         }
     }
@@ -124,7 +132,13 @@ class AtmController {
         } else {
             debt.amount = totalAmount
         }
+
+        const target = await atmDB.getByName(debt.lender)
+        const targetDebts = await debtDB.getByBorrower(target.name)
+        await this.deposit(amount, target, targetDebts, true)
+
         await debtDB.update(debt)
+
         await this.setCurrentDebts()
         await this.setCurrentReceivables()
         return {
