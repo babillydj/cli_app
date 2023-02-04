@@ -1,0 +1,26 @@
+{
+  "name": "katalis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "atm": "src/commands/atm.js",
+    "poker": "src/commands/poker.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^10.0.0",
+    "inquirer": "^9.1.4",
+    "luxon": "^3.2.1",
+    "pouchdb": "^8.0.0",
+    "prompt-sync": "^4.2.0",
+    "yargs": "^17.6.2"
+  }
+}

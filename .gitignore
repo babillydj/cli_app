@@ -1,0 +1,7 @@
+.idea
+katalis.iml
+
+db
+node_modules
+
+package-lock.json
