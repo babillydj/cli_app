@@ -8,15 +8,18 @@ tools: NodeJS, prompt-sync, pouchdb, mocha
 # Installation
 Make sure you have NPM installed
 - run `npm install`
-- run `atm`
+- run `npm run start`
+- choose `ATM`
 
-**_try to run `npm link` then run `atm` if instruction above does not work_
+or
+- run `npm link`
+- run `atm`
 
 
 run test:
-- run `npm run test` (container name)
+- run `npm run test`
 
 
 
 # Notes
-local db created at root project
+local db should be created at root project
