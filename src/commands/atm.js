@@ -28,7 +28,7 @@ while (guess !== "exit") {
                     console.log("You are still logged in as " + loggedAs)
                     console.log("type 'logout' if you want to change account")
                 } else {
-                    loggedAs = inputs.join(" ")
+                    loggedAs = inputs.join(" ").trim().toLowerCase()
                     const resp = await atmController.login(loggedAs)
 
                     console.log(`Hello, ${resp.name}!`)
