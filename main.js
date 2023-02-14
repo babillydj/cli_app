@@ -33,23 +33,19 @@ inquirer
             message: 'Please chose which application you want to use',
             choices: [
                 'ATM',
-                {
-                    name: 'Poker',
-                    disabled: 'Still under development',
-                },
+                'Poker'
             ],
         },
     ])
     .then((answers) => {
-        console.log(JSON.stringify(answers, null, '  '));
         const {apps} =  answers
         if (apps === "ATM") {
-            runScript('./src/commands/atm.js', function (err) {
+            runScript('src/commands/atm.js', function (err) {
                 // if (err) throw err;
                 console.log('Exit App');
             });
         } else if (apps === "Poker Face") {
-            runScript('./src/commands/poker.js', function (err) {
+            runScript('src/commands/poker.js', function (err) {
                 // if (err) throw err;
                 console.log('Exit App');
             });

@@ -148,8 +148,8 @@ class AtmController {
         }
     }
 
-    async debtSubmission(amount, targetName="Bank Katalis") {
-        if (targetName !== "Bank Katalis") {
+    async debtSubmission(amount, targetName="Bank Billboo") {
+        if (targetName !== "Bank Billboo") {
             const targetUserExists = await atmDB.getByName(targetName)
             if (targetUserExists.status === 404) {
                 throw  "target user not found"

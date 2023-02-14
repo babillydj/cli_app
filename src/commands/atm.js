@@ -7,7 +7,7 @@ const prompt = promptSync({sigint: true})
 import { atmController } from "../controller/atm.js";
 
 console.clear()
-console.log("Welcome to Katalis ATM")
+console.log("Welcome to Billboo ATM")
 console.log("Type 'login <your-username>' to start")
 console.log()
 
